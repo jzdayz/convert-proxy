@@ -55,7 +55,7 @@ public class Server {
         proxy.setType("trojan");
         proxy.setServer("jzdayz.club");
         proxy.setPort(443);
-        proxy.setPassword("1008611");
+        proxy.setPassword(System.getProperty("trojan.pwd"));
         yamlData.getProxy().add(0, proxy);
 
         for (ProxyGroup proxyGroup : yamlData.getProxyGroup()) {
