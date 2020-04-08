@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+group='io.github.jzdayz'
+version='1.0.0'
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.10.3'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.10.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.3'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.10.3'
+    implementation 'org.yaml:snakeyaml:1.26'
+    implementation 'com.google.guava:guava:28.1-jre'
+    implementation 'io.undertow:undertow-core:2.0.30.Final'
+    implementation("com.squareup.okhttp3:okhttp:4.5.0")
+    implementation 'org.yaml:snakeyaml:1.26'
+    testImplementation 'junit:junit:4.12'
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "io.github.jzdayz.Server"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
